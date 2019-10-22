@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+<!--{% load staticfiles %}-->
+
+<!--<html >-->
+<!--    <head>-->
+<!--        <title>Dorry's Blog</title>-->
+<!--        &lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">-->
+<!--        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">-->
+<!--        <link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
+<!--        &lt;!&ndash;<link rel="stylesheet" href="/static/css/blog.css">&ndash;&gt;-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div class="page-header">-->
+<!--            <h1><a href="/blog">Dorry's Blog</a></h1>-->
+<!--        </div>-->
+        {% block content %}
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>發布時間:{{post.created_date}}</p>
+                            </div>
+                            <h1><a href="/blog/{{post.id}}">{{ post.title }}</a></h1>
+                            <p>{{ post.text | linebreaks }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>發布新文章:</h4>
+                </div>
+                <div class="col-md-8">
+                    <form action="/blog/add_record" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
+                        <table>
+                            {{ post_form.as_table }}
+                        </table>
+                        <input type="submit" name="add_record" value="提交">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

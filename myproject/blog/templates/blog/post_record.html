@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+<!--{% load staticfiles %}-->
+
+<!--<html >-->
+<!--    <head>-->
+<!--        <title>Dorry's Blog</title>-->
+<!--        &lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--&lt;!&ndash;        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">&ndash;&gt;-->
+<!--        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">-->
+<!--        <link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
+<!--        &lt;!&ndash;<link rel="stylesheet" href="/static/css/blog.css">&ndash;&gt;-->
+<!--    </head>-->
+<!--    <body>-->
+        {% block content %}
+        <div class="blog-container">
+            <div class="blog-header">
+                <h1 class="blog-post-title">{{ post.title }}</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    <div class="blog-post">
+                        <p>
+                            {{ post.text }}
+                        </p>
+                        <p class="blog-post-meta">{{ post.created_date }} by <a href="#">{{ post.author }}</a></p>
+                        <a href="/blog">回首頁</a>
+                        <a href="/blog">下一頁</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>
